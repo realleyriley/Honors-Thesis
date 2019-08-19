@@ -25,7 +25,26 @@ def rotate_images(images_folder, debug=False):
     if(debug):
         cv2.destroyAllWindows()     # cleanup
 
+def rotate_and_grey_images(images_folder, save_folder, debug=False):
+    image_names = os.listdir(f'{images_folder}/.')
+    for image_name in image_names:
+        image = cv2.imread(f'{images_folder}/{image_name}')     # read in each image into memory
+        grey = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)          # convert to grey 
+        cv2.imwrite(f'{save_folder}/{image_name[0:-4]}_c1.jpg', grey)
 
+        for angle in [90, 180, 270]:
+            rotated = imutils.rotate(grey, angle)      # rotate image
+            if(debug):
+                cv2.imshow("Rotated", rotated)           # show the image
+                key = cv2.waitKey(0)
+                if key == ord("q"):   # if the `q` key was pressed, break from the loop
+                    break
+            cv2.imwrite(f'{save_folder}/{image_name[0:-4]}_c{int(angle/90) + 1}.jpg', rotated)
+    
+    if(debug):
+        cv2.destroyAllWindows()     # cleanup
+        
+        
 def rotate_xml(xml_file_path, out='out.xml', debug=False):
     # if(debug):
         # pdb.set_trace()
@@ -157,7 +176,9 @@ def rotate_xml(xml_file_path, out='out.xml', debug=False):
     tree.write(out)
 
 
-rotate_images('images')
+# rotate_images('images')
 # rotate_xml('train_cleaned.xml', 'train.xml')
 # rotate_xml('test_cleaned.xml', 'test.xml')
 
+rotate_and_grey_images('..//data//ibug_300W_large_face_landmark_dataset//helen//testset', '..//data//ibug_300W_large_face_landmark_dataset//helen//test_grey_rotated')
+rotate_and_grey_images('..//data//ibug_300W_large_face_landmark_dataset//helen//trainset', '..//data//ibug_300W_large_face_landmark_dataset//helen//train_grey_rotated')
