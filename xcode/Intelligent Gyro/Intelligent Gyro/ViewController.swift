@@ -1,39 +1,19 @@
 //
 //  ViewController.swift
-//  coreML2
+//  Intelligent Gyro
 //
-//  Created by Communist Hacker on 9/6/19.
+//  Created by Communist Hacker on 9/9/19.
 //  Copyright © 2019 Communism. All rights reserved.
 //
 
-// import necessary packages
 import UIKit
+import CoreMotion
 import AVFoundation
 import Vision
 
-
 class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
 
-//    let model = VNCoreMLModel(for: m6_33512_9652().model) // else { throw(exception:any) }
-//    let model: VNCoreMLModel?
-    
-    //    func initModel() {
-    //        guard let model = try? VNCoreMLModel(for: m6_33512_9652().model) else { return }
-    //    }
-/*    required init?(coder aDecoder: NSCoder) {
-//        super.init(coder: aDecoder)
-        guard self.model = try? VNCoreMLModel(for: m6_33512_9652().model) else { return nil }
-//        self.model = VNCoreMLModel(for: m6_33512_9652().model)
-//        do {
-//          self.model = VNCoreMLModel(for: m6_33512_9652().model)
-//        }
-//        catch let error as NSerror {
-//            print(error.localizedDescription)
-//        }
-        
-        super.init(coder: aDecoder)
-    }
-*/
+    var motionManager = CMMotionManager()
     
     // create a label to hold the Pokemon name and confidence
     let label: UILabel = {
@@ -44,21 +24,48 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         label.font = label.font.withSize(30)
         return label
     }()
-        
+    
     override func viewDidLoad() {
-        // call the parent function
         super.viewDidLoad()
         
-        // establish the capture session and add the label
         setupCaptureSession()
         view.addSubview(label)
         setupLabel()
-//        initModel()
     }
     
+    /*
+    // gyro scope
     override func viewDidAppear(_ animated: Bool) {
+        motionManager.gyroUpdateInterval = 0.5      // update every 0.1 seconds
+        
+        motionManager.startGyroUpdates(to: OperationQueue.current!) { (data, error) in
+            if let gyroData = data {
+                print (String(format: "x: %.2f, y: %.2f, z: %.2f", gyroData.rotationRate.x, gyroData.rotationRate.y, gyroData.rotationRate.z))
+            }
+        }
+    } */
+
+    // accelerometer
+    // orientation - (x,y,z)
+    // Face up flat - (0,0,-1)
+    // Face down flat - (0,0,1)
+    // vertical - (0, -1, 0)
+    // right - (1,0,0)
+    // left - (-1, 0, 0)
+    /*
+    override func viewDidAppear(_ animated: Bool) {
+        motionManager.accelerometerUpdateInterval = 0.5      // update every 0.1 seconds
+        
+        motionManager.startAccelerometerUpdates(to: OperationQueue.current!) { (data, error) in
+            if let gyroData = data {
+                print (String(format: "x: %.2f, y: %.2f, z: %.2f", gyroData.acceleration.x, gyroData.acceleration.y, gyroData.acceleration.z))
+            }
+        }
+    } */
+    override func viewDidAppear(_ animated: Bool) {        
+        // the new FLAT orientation
         if UIDevice.current.orientation.isFlat {
-            print( "UIDevice.current.orientation.isFlat " )
+            print( "UIDevice.current.orientation.isFlat = true" )
         }
         else {
             print("Not flat")
@@ -81,12 +88,46 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         default: print("other")
         }
     }
+//    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+//        if UIDevice.current.orientation.isLandscape {
+//            print("Landscape")
+//            if UIDevice.current.orientation.isFlat {
+//                print("Flat")
+//            } else {
+//                print("Portrait")
+//            }
+//        }
+//    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        print("-------- View Will Transition --------")
+        print("Current orientation: ", UIDevice.current.orientation.rawValue)
+//        sleep(4)
+        // NOTE: UIDevice.current.orientation.is_ gets the current device orientation, not the screen orientation. This is a good thing for me.
+        if UIDevice.current.orientation.isLandscape {
+            print("Landscape")
+//            if UIDevice.current.orientation.isFlat {
+//                print("Flat")
+//            } else {
+//                print("Not Flat")
+//            }
+        }
+        else if UIDevice.current.orientation.isPortrait {
+            print("Portrait")
+//            if UIDevice.current.orientation.isFlat {
+//                print("Flat")
+//            } else {
+//                print("Not Flat")
+//            }
+        }
         
-    override func didReceiveMemoryWarning() {
-        // call the parent function
-        super.didReceiveMemoryWarning()
+        if UIDevice.current.orientation.isFlat {
+            print("Flat main")
+        } else {
+            print("Not Flat main")
+        }
         
-        // Dispose of any resources that can be recreated.
+//        sleep(4)
     }
     
     func setupCaptureSession() {
@@ -120,8 +161,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     
     
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-        print("Caputure Output")
-//        // load our CoreML Pokedex model
+        //        // load our CoreML Pokedex model
         guard let model = try? VNCoreMLModel(for: m5_26078_9879().model) else { return }
         
         // run an inference with CoreML
@@ -158,6 +198,13 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         
         // constrain the the label to 20 pixels from the bottom
         label.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20).isActive = true
+    }
+    
+    override func didReceiveMemoryWarning() {
+        // call the parent function
+        super.didReceiveMemoryWarning()
+        
+        // Dispose of any resources that can be recreated.
     }
 }
 
