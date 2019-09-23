@@ -15,27 +15,35 @@ import Vision
 class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
 
 //    let model = VNCoreMLModel(for: m6_33512_9652().model) // else { throw(exception:any) }
-//    let model: VNCoreMLModel?
+//    var model: VNCoreMLModel
     
-    //    func initModel() {
-    //        guard let model = try? VNCoreMLModel(for: m6_33512_9652().model) else { return }
-    //    }
+    var model = try! VNCoreMLModel(for: m5_26078_9879().model)
+    
+    
+//    func initModel() {
+//        guard let model = try? VNCoreMLModel(for: m5_26078_9879().model) else { return }
+//    }
+    
 /*    required init?(coder aDecoder: NSCoder) {
 //        super.init(coder: aDecoder)
-        guard self.model = try? VNCoreMLModel(for: m6_33512_9652().model) else { return nil }
-//        self.model = VNCoreMLModel(for: m6_33512_9652().model)
-//        do {
-//          self.model = VNCoreMLModel(for: m6_33512_9652().model)
-//        }
-//        catch let error as NSerror {
-//            print(error.localizedDescription)
-//        }
+//        guard self.model = try? VNCoreMLModel(for: m5_26078_9879().model) else { return nil }
+//        self.model = VNCoreMLModel(for: m5_26078_9879().model)
+        do {
+            self.model = try VNCoreMLModel(for: m5_26078_9879().model)
+        }
+        catch let error as NSError {
+            print(error.localizedDescription)
+            
+        } catch {
+            self.model = nil
+        }
+        
         
         super.init(coder: aDecoder)
     }
 */
     
-    // create a label to hold the Pokemon name and confidence
+    // create a label to hold the label and confidence
     let label: UILabel = {
         let label = UILabel()
         label.textColor = .white
@@ -44,7 +52,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         label.font = label.font.withSize(30)
         return label
     }()
-        
+    
+    // this is called exactly once
     override func viewDidLoad() {
         // call the parent function
         super.viewDidLoad()
@@ -53,9 +62,10 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         setupCaptureSession()
         view.addSubview(label)
         setupLabel()
-//        initModel()
+//        initModel()     // this doesn't work yet
     }
     
+    // called whenever this view appears. right now I'm just testing some swift functions.
     override func viewDidAppear(_ animated: Bool) {
         if UIDevice.current.orientation.isFlat {
             print( "UIDevice.current.orientation.isFlat " )
@@ -122,10 +132,10 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         print("Caputure Output")
 //        // load our CoreML Pokedex model
-        guard let model = try? VNCoreMLModel(for: m5_26078_9879().model) else { return }
+//        guard let model = try? VNCoreMLModel(for: m5_26078_9879().model) else { return }
         
         // run an inference with CoreML
-        let request = VNCoreMLRequest(model: model) { (finishedRequest, error) in
+        let request = VNCoreMLRequest(model: self.model) { (finishedRequest, error) in
             
             // grab the inference results
             guard let results = finishedRequest.results as? [VNClassificationObservation] else { return }

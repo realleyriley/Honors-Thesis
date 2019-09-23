@@ -25,6 +25,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         return label
     }()
     
+    // called once
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -62,7 +63,12 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             }
         }
     } */
+    
+    // called whenever the view controller appears
     override func viewDidAppear(_ animated: Bool) {        
+//        AppUtility.lockOrientation(.portrait)
+//        UIDevice.current.setValue(3, forKey: "orientation")     // rotate the screen AFTER the view appears
+        
         // the new FLAT orientation
         if UIDevice.current.orientation.isFlat {
             print( "UIDevice.current.orientation.isFlat = true" )
@@ -99,26 +105,19 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
 //        }
 //    }
     
+    // this is the brains of the operation. When the device wants to rotate, I want to initialize the camera and check the users face to make sure we should actually rotate.
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         print("-------- View Will Transition --------")
         print("Current orientation: ", UIDevice.current.orientation.rawValue)
 //        sleep(4)
         // NOTE: UIDevice.current.orientation.is_ gets the current device orientation, not the screen orientation. This is a good thing for me.
         if UIDevice.current.orientation.isLandscape {
-            print("Landscape")
-//            if UIDevice.current.orientation.isFlat {
-//                print("Flat")
-//            } else {
-//                print("Not Flat")
-//            }
+            print("Currently Landscape")
+            
         }
         else if UIDevice.current.orientation.isPortrait {
-            print("Portrait")
-//            if UIDevice.current.orientation.isFlat {
-//                print("Flat")
-//            } else {
-//                print("Not Flat")
-//            }
+            print("Currently Portrait")
+            
         }
         
         if UIDevice.current.orientation.isFlat {
@@ -127,7 +126,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             print("Not Flat main")
         }
         
-//        sleep(4)
+//        sleep(2)
     }
     
     func setupCaptureSession() {
@@ -161,7 +160,15 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     
     
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-        //        // load our CoreML Pokedex model
+        
+        // testing at what angle the device says its flat
+//        if UIDevice.current.orientation.isFlat {
+//            print("Flat main")
+//        } else {
+//            print("Not Flat main")
+//        }
+        
+        // load our CoreML Pokedex model
         guard let model = try? VNCoreMLModel(for: m5_26078_9879().model) else { return }
         
         // run an inference with CoreML
@@ -208,3 +215,22 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     }
 }
 
+//struct AppUtility {
+//
+//    static func lockOrientation(_ orientation: UIInterfaceOrientationMask) {
+//
+//        if let delegate = UIApplication.shared.delegate as? AppDelegate {
+//            delegate.orientationLock = orientation
+//        }
+//    }
+//
+//    /// OPTIONAL Added method to adjust lock and rotate to the desired orientation
+//    static func lockOrientation(_ orientation: UIInterfaceOrientationMask, andRotateTo rotateOrientation:UIInterfaceOrientation) {
+//
+//        self.lockOrientation(orientation)
+//
+//        UIDevice.current.setValue(rotateOrientation.rawValue, forKey: "orientation")
+//        UINavigationController.attemptRotationToDeviceOrientation()
+//    }
+//
+//}
