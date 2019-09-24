@@ -12,7 +12,7 @@ import Foundation
 import CoreMotion
 import Vision
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
     
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var cameraView: UIView!
@@ -44,7 +44,7 @@ class ViewController: UIViewController {
 //            view.layer.addSublayer(previewLayer)
 //
 //            // buffer the video and start the capture session
-//            captureOutput.setSampleBufferDelegate(self as! AVCaptureVideoDataOutputSampleBufferDelegate, queue: DispatchQueue(label: "videoQueue"))
+            captureOutput.setSampleBufferDelegate(self as! AVCaptureVideoDataOutputSampleBufferDelegate, queue: DispatchQueue(label: "videoQueue"))
             
             captureSession?.startRunning()
             print("viewDidLoad successfully: ", Date())
@@ -52,10 +52,36 @@ class ViewController: UIViewController {
         catch {
             print("error")
         }
-        
-//        setupCaptureSession()
-//        view.addSubview(label)
     }
+    
+    //    func setupCaptureSession() {
+    //        // create a new capture session
+    //        let captureSession = AVCaptureSession()
+    //
+    //        // find the available cameras
+    //        let availableDevices = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInWideAngleCamera], mediaType: AVMediaType.video, position: .front).devices
+    //
+    //        do {
+    //            // select a camera
+    //            if let captureDevice = availableDevices.first {
+    //                captureSession.addInput(try AVCaptureDeviceInput(device: captureDevice))
+    //            }
+    //        } catch {
+    //            // print an error if the camera is not available
+    //            print(error.localizedDescription)
+    //        }
+    //
+    //        // setup the video output to the screen and add output to our capture session
+    //        let captureOutput = AVCaptureVideoDataOutput()
+    //        captureSession.addOutput(captureOutput)
+    //        let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+    //        previewLayer.frame = view.frame
+    //        view.layer.addSublayer(previewLayer)
+    //
+    //        // buffer the video and start the capture session
+    //        captureOutput.setSampleBufferDelegate(self as! AVCaptureVideoDataOutputSampleBufferDelegate, queue: DispatchQueue(label: "videoQueue"))
+    //        captureSession.startRunning()
+    //    }
 
     @IBAction func switchCamera(_ sender: Any) {
         guard let currentCameraInput: AVCaptureInput = captureSession?.inputs.first else{
@@ -105,34 +131,7 @@ class ViewController: UIViewController {
         }
     }
     
-//    func setupCaptureSession() {
-//        // create a new capture session
-//        let captureSession = AVCaptureSession()
-//
-//        // find the available cameras
-//        let availableDevices = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInWideAngleCamera], mediaType: AVMediaType.video, position: .front).devices
-//
-//        do {
-//            // select a camera
-//            if let captureDevice = availableDevices.first {
-//                captureSession.addInput(try AVCaptureDeviceInput(device: captureDevice))
-//            }
-//        } catch {
-//            // print an error if the camera is not available
-//            print(error.localizedDescription)
-//        }
-//
-//        // setup the video output to the screen and add output to our capture session
-//        let captureOutput = AVCaptureVideoDataOutput()
-//        captureSession.addOutput(captureOutput)
-//        let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-//        previewLayer.frame = view.frame
-//        view.layer.addSublayer(previewLayer)
-//
-//        // buffer the video and start the capture session
-//        captureOutput.setSampleBufferDelegate(self as! AVCaptureVideoDataOutputSampleBufferDelegate, queue: DispatchQueue(label: "videoQueue"))
-//        captureSession.startRunning()
-//    }
+
     
     
     // This is an overriden function https://developer.apple.com/documentation/avfoundation/avcapturevideodataoutputsamplebufferdelegate/1385775-captureoutput

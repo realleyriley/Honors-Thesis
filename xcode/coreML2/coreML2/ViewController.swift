@@ -13,36 +13,9 @@ import Vision
 
 
 class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
-
-//    let model = VNCoreMLModel(for: m6_33512_9652().model) // else { throw(exception:any) }
-//    var model: VNCoreMLModel
     
     var model = try! VNCoreMLModel(for: m5_26078_9879().model)
-    
-    
-//    func initModel() {
-//        guard let model = try? VNCoreMLModel(for: m5_26078_9879().model) else { return }
-//    }
-    
-/*    required init?(coder aDecoder: NSCoder) {
-//        super.init(coder: aDecoder)
-//        guard self.model = try? VNCoreMLModel(for: m5_26078_9879().model) else { return nil }
-//        self.model = VNCoreMLModel(for: m5_26078_9879().model)
-        do {
-            self.model = try VNCoreMLModel(for: m5_26078_9879().model)
-        }
-        catch let error as NSError {
-            print(error.localizedDescription)
-            
-        } catch {
-            self.model = nil
-        }
-        
-        
-        super.init(coder: aDecoder)
-    }
-*/
-    
+
     // create a label to hold the label and confidence
     let label: UILabel = {
         let label = UILabel()
@@ -135,31 +108,31 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
 //        guard let model = try? VNCoreMLModel(for: m5_26078_9879().model) else { return }
         
         // run an inference with CoreML
-        let request = VNCoreMLRequest(model: self.model) { (finishedRequest, error) in
-            
-            // grab the inference results
-            guard let results = finishedRequest.results as? [VNClassificationObservation] else { return }
-            
-            // grab the highest confidence result
-            guard let Observation = results.first else { return }
-            
-            // create the label text components
-            let predclass = "\(Observation.identifier)"
-            let predconfidence = String(format: "%.02f%", Observation.confidence * 100)
-            
-            // set the label text
-            DispatchQueue.main.async(execute: {
-                self.label.text = "\(predclass) \(predconfidence)"
-            })
-        }
-        
-        // create a Core Video pixel buffer which is an image buffer that holds pixels in main memory
-        // Applications generating frames, compressing or decompressing video, or using Core Image
-        // can all make use of Core Video pixel buffers
-        guard let pixelBuffer: CVPixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
-        
-        // execute the request
-        try? VNImageRequestHandler(cvPixelBuffer: pixelBuffer, options: [:]).perform([request])
+//        let request = VNCoreMLRequest(model: self.model) { (finishedRequest, error) in
+//
+//            // grab the inference results
+//            guard let results = finishedRequest.results as? [VNClassificationObservation] else { return }
+//
+//            // grab the highest confidence result
+//            guard let Observation = results.first else { return }
+//
+//            // create the label text components
+//            let predclass = "\(Observation.identifier)"
+//            let predconfidence = String(format: "%.02f%", Observation.confidence * 100)
+//
+//            // set the label text
+//            DispatchQueue.main.async(execute: {
+//                self.label.text = "\(predclass) \(predconfidence)"
+//            })
+//        }
+//
+//        // create a Core Video pixel buffer which is an image buffer that holds pixels in main memory
+//        // Applications generating frames, compressing or decompressing video, or using Core Image
+//        // can all make use of Core Video pixel buffers
+//        guard let pixelBuffer: CVPixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
+//
+//        // execute the request
+//        try? VNImageRequestHandler(cvPixelBuffer: pixelBuffer, options: [:]).perform([request])
     }
     
     func setupLabel() {
