@@ -22,6 +22,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     var frontCamera = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .front)
     var backCamera = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .back)
     
+    var model = try! VNCoreMLModel(for: m6_23090_9970().model)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,12 +40,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             let captureOutput = AVCaptureVideoDataOutput()
             captureSession?.addOutput(captureOutput)
 
-//            let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-//            previewLayer.frame = view.frame
-//            view.layer.addSublayer(previewLayer)
-//
-//            // buffer the video and start the capture session
-            captureOutput.setSampleBufferDelegate(self as! AVCaptureVideoDataOutputSampleBufferDelegate, queue: DispatchQueue(label: "videoQueue"))
+            captureOutput.setSampleBufferDelegate(self as AVCaptureVideoDataOutputSampleBufferDelegate, queue: DispatchQueue(label: "videoQueue"))     // buffer the video and start the capture session
             
             captureSession?.startRunning()
             print("viewDidLoad successfully: ", Date())
@@ -54,35 +50,15 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         }
     }
     
-    //    func setupCaptureSession() {
-    //        // create a new capture session
-    //        let captureSession = AVCaptureSession()
-    //
-    //        // find the available cameras
-    //        let availableDevices = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInWideAngleCamera], mediaType: AVMediaType.video, position: .front).devices
-    //
-    //        do {
-    //            // select a camera
-    //            if let captureDevice = availableDevices.first {
-    //                captureSession.addInput(try AVCaptureDeviceInput(device: captureDevice))
-    //            }
-    //        } catch {
-    //            // print an error if the camera is not available
-    //            print(error.localizedDescription)
-    //        }
-    //
-    //        // setup the video output to the screen and add output to our capture session
-    //        let captureOutput = AVCaptureVideoDataOutput()
-    //        captureSession.addOutput(captureOutput)
-    //        let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-    //        previewLayer.frame = view.frame
-    //        view.layer.addSublayer(previewLayer)
-    //
-    //        // buffer the video and start the capture session
-    //        captureOutput.setSampleBufferDelegate(self as! AVCaptureVideoDataOutputSampleBufferDelegate, queue: DispatchQueue(label: "videoQueue"))
-    //        captureSession.startRunning()
-    //    }
-
+    override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
+        return UIInterfaceOrientation.portrait
+    }
+    
+//    override var shouldAutorotate: Bool {
+//        return false
+//    }
+    
+    
     @IBAction func switchCamera(_ sender: Any) {
         guard let currentCameraInput: AVCaptureInput = captureSession?.inputs.first else{
             return
@@ -101,10 +77,13 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
                     videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession!)
                     videoPreviewLayer?.frame = view.layer.bounds
                     cameraView.layer.addSublayer(videoPreviewLayer!)
+                    let captureOutput = AVCaptureVideoDataOutput()
+                    captureSession?.addOutput(captureOutput)
+                    captureOutput.setSampleBufferDelegate(self as AVCaptureVideoDataOutputSampleBufferDelegate, queue: DispatchQueue(label: "videoQueue"))     // buffer the video and start the capture session
                     captureSession?.startRunning()
                 }
                 catch{
-                    print("error")
+                    print("camera switch error")
                 }
             }
             else
@@ -118,16 +97,16 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
                     videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession!)
                     videoPreviewLayer?.frame = view.layer.bounds
                     cameraView.layer.addSublayer(videoPreviewLayer!)
-                    // probably need to setup coreML again
+                    let captureOutput = AVCaptureVideoDataOutput()
+                    captureSession?.addOutput(captureOutput)
+                    captureOutput.setSampleBufferDelegate(self as AVCaptureVideoDataOutputSampleBufferDelegate, queue: DispatchQueue(label: "videoQueue"))     // buffer the video and start the capture session
                     captureSession?.startRunning()
                     
                 }
                 catch{
-                    print("error")
+                    print("camera switch error")
                 }
-                
             }
-            
         }
     }
     
@@ -136,21 +115,14 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     
     // This is an overriden function https://developer.apple.com/documentation/avfoundation/avcapturevideodataoutputsamplebufferdelegate/1385775-captureoutput
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-        print("Caputured Output")
-        //        // load our CoreML Pokedex model
-        /*guard let model = try? VNCoreMLModel(for: m5_26078_9879().model) else { return }
         
         // run an inference with CoreML
-        let request = VNCoreMLRequest(model: model) { (finishedRequest, error) in
-            
+        let request = VNCoreMLRequest(model: self.model) { (finishedRequest, error) in
             // grab the inference results
             guard let results = finishedRequest.results as? [VNClassificationObservation] else { return }
+            guard let Observation = results.first else { return }   // grab the highest confidence result
             
-            // grab the highest confidence result
-            guard let Observation = results.first else { return }
-            
-            // create the label text components
-            let predclass = "\(Observation.identifier)"
+            let predclass = "\(Observation.identifier)"     // create the label text components
             let predconfidence = String(format: "%.02f%", Observation.confidence * 100)
             
             // set the label text
@@ -165,13 +137,13 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         guard let pixelBuffer: CVPixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
         
         // execute the request
-        try? VNImageRequestHandler(cvPixelBuffer: pixelBuffer, options: [:]).perform([request]) */
+        try? VNImageRequestHandler(cvPixelBuffer: pixelBuffer, options: [:]).perform([request])
     }
     
-    /*
+    
     // called whenever the view controller appears
     override func viewDidAppear(_ animated: Bool) {
-        UIDevice.current.setValue(3, forKey: "orientation")     // rotate the screen AFTER the view appears
+//        UIDevice.current.setValue(UIDeviceOrientation.landscapeLeft.rawValue, forKey: "orientation")     // rotate the screen AFTER the view appears
         
         // the new FLAT orientation
         if UIDevice.current.orientation.isFlat {
@@ -198,37 +170,25 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         default: print("other")
         }
     }
-    //    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-    //        if UIDevice.current.orientation.isLandscape {
-    //            print("Landscape")
-    //            if UIDevice.current.orientation.isFlat {
-    //                print("Flat")
-    //            } else {
-    //                print("Portrait")
-    //            }
-    //        }
-    //    }
     
+    
+    // portrait = 1, upsidedown = 2, landscapeLeft = 3, landscapeRight = 4
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         print("-------- View Will Transition --------")
-        print("Current orientation: ", UIDevice.current.orientation.rawValue)
+        let currentOrientation = UIDevice.current.orientation.rawValue
+        print("Current orientation: ", currentOrientation)
+        
+        // here is where the magic happens
+        
+//        UIDevice.current.setValue(UIDeviceOrientation.landscapeLeft.rawValue, forKey: "orientation")
+        
         //        sleep(4)
         // NOTE: UIDevice.current.orientation.is_ gets the current device orientation, not the screen orientation. This is a good thing for me.
         if UIDevice.current.orientation.isLandscape {
             print("Landscape")
-            //            if UIDevice.current.orientation.isFlat {
-            //                print("Flat")
-            //            } else {
-            //                print("Not Flat")
-            //            }
         }
         else if UIDevice.current.orientation.isPortrait {
             print("Portrait")
-            //            if UIDevice.current.orientation.isFlat {
-            //                print("Flat")
-            //            } else {
-            //                print("Not Flat")
-            //            }
         }
         
         if UIDevice.current.orientation.isFlat {
@@ -239,7 +199,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         
         //        sleep(4)
     }
-    */
+    
     
     override func didReceiveMemoryWarning() {
         // call the parent function

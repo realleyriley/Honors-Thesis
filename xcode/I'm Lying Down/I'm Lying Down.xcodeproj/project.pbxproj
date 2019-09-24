@@ -12,6 +12,7 @@
 		223BEB4E2339BE1C00263FA9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 223BEB4C2339BE1C00263FA9 /* Main.storyboard */; };
 		223BEB502339BE1E00263FA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 223BEB4F2339BE1E00263FA9 /* Assets.xcassets */; };
 		223BEB532339BE1E00263FA9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 223BEB512339BE1E00263FA9 /* LaunchScreen.storyboard */; };
+		223C0BDC2339F19F00788CFA /* m6_23090_9970.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 223C0BDB2339F19F00788CFA /* m6_23090_9970.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		223BEB4F2339BE1E00263FA9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		223BEB522339BE1E00263FA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		223BEB542339BE1E00263FA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		223C0BDB2339F19F00788CFA /* m6_23090_9970.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = m6_23090_9970.mlmodel; path = ../../../models/m6_23090_9970.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 		223BEB472339BE1C00263FA9 /* I'm Lying Down */ = {
 			isa = PBXGroup;
 			children = (
+				223C0BDB2339F19F00788CFA /* m6_23090_9970.mlmodel */,
 				223BEB482339BE1C00263FA9 /* AppDelegate.swift */,
 				223BEB4A2339BE1C00263FA9 /* ViewController.swift */,
 				223BEB4C2339BE1C00263FA9 /* Main.storyboard */,
@@ -136,6 +139,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				223BEB4B2339BE1C00263FA9 /* ViewController.swift in Sources */,
+				223C0BDC2339F19F00788CFA /* m6_23090_9970.mlmodel in Sources */,
 				223BEB492339BE1C00263FA9 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
