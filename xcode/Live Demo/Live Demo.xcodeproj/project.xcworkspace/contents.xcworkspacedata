@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:Intelligent Gyro.xcodeproj">
+      location = "self:Live Demo.xcodeproj">
    </FileRef>
 </Workspace>

@@ -13,12 +13,14 @@ import CoreMotion
 import Vision
 
 class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
-
+    
     
     @IBOutlet weak var predictedOrientation: UILabel!
     @IBOutlet weak var confidence: UILabel!
     
     @IBOutlet weak var cameraView: UIView!
+    
+    
     
     var captureSession: AVCaptureSession?
     var videoPreviewLayer: AVCaptureVideoPreviewLayer?
@@ -57,9 +59,9 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         return UIInterfaceOrientation.portrait
     }
     
-//    override var shouldAutorotate: Bool {
-//        return false
-//    }
+    override var shouldAutorotate: Bool {
+        return false
+    }
     
     
     @IBAction func switchCamera(_ sender: Any) {
@@ -113,99 +115,19 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         }
     }
     
-
-    public class LinkedList {
-        fileprivate var head: CVPixelBuffer?
-        private var tail: CVPixelBuffer?
-        
-        public var first: CVPixelBuffer? {
-            return head
-        }
-        
-        public var last: CVPixelBuffer? {
-            return tail
-        }
-    }
-    
-    var CVpixel: CVPixelBuffer? = nil
     
     // This is an overriden function https://developer.apple.com/documentation/avfoundation/avcapturevideodataoutputsamplebufferdelegate/1385775-captureoutput
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         
         // run an inference with CoreML
-//        let request = VNCoreMLRequest(model: self.model) { (finishedRequest, error) in
-//            // grab the inference results
-//            guard let results = finishedRequest.results as? [VNClassificationObservation] else { return }
-//            guard let Observation = results.first else { return }   // grab the highest confidence result
-//
-//            let predclass = "\(Observation.identifier)"     // create the label text components
-//            let predconfidence = String(format: "%.02f%", Observation.confidence * 100)
-//
-//            // set the label text
-//            DispatchQueue.main.async(execute: {
-//                self.label.text = "\(predclass) \(predconfidence)"
-//            })
-//        }
-        
-        // create a Core Video pixel buffer which is an image buffer that holds pixels in main memory
-        // Applications generating frames, compressing or decompressing video, or using Core Image
-        // can all make use of Core Video pixel buffers
-//        guard let pixelBuffer: CVPixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
-        CVpixel = CMSampleBufferGetImageBuffer(sampleBuffer)
-        
-        // execute the request
-//        try? VNImageRequestHandler(cvPixelBuffer: pixelBuffer, options: [:]).perform([request])
-    }
-    
-    
-    
-    
-    // called whenever the view controller appears
-    override func viewDidAppear(_ animated: Bool) {
-//        UIDevice.current.setValue(UIDeviceOrientation.landscapeLeft.rawValue, forKey: "orientation")     // rotate the screen AFTER the view appears
-        
-        // the new FLAT orientation
-        if UIDevice.current.orientation.isFlat {
-            print( "UIDevice.current.orientation.isFlat = true" )
-        }
-        else {
-            print("Not flat")
-        }
-        
-        // the other orientations
-        switch UIDevice.current.orientation {
-        case .landscapeLeft:
-            print("landscapeLeft")
-        case .landscapeRight:
-            print("landscapeRight")
-        case .portrait:
-            print("portrait")
-        case .portraitUpsideDown:
-            print("portraitUpsideDown")
-        case .faceUp:
-            print("faceUp")
-        case .faceDown:
-            print("faceDown")
-        default: print("other")
-        }
-    }
-    
-    
-    // portrait = 1, upsidedown = 2, landscapeLeft = 3, landscapeRight = 4
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        print("-------- View Will Transition --------")
-        let currentOrientation = UIDevice.current.orientation.rawValue
-        print("Current orientation: ", currentOrientation)
-        
-        // here is where the magic happens
         let request = VNCoreMLRequest(model: self.model) { (finishedRequest, error) in
             // grab the inference results
             guard let results = finishedRequest.results as? [VNClassificationObservation] else { return }
             guard let Observation = results.first else { return }   // grab the highest confidence result
-            
+
             let predclass = "\(Observation.identifier)"     // create the label text components
             let predconfidence = String(format: "%.02f%", Observation.confidence * 100)
-            
+
             // set the label text
             DispatchQueue.main.async(execute: {
                 self.predictedOrientation.text = "\(predclass)"
@@ -213,36 +135,14 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             })
         }
         
-        // get the image
-//        guard let pixelBuffer: CVPixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
-        
+        // create a Core Video pixel buffer which is an image buffer that holds pixels in main memory
+        // Applications generating frames, compressing or decompressing video, or using Core Image
+        // can all make use of Core Video pixel buffers
+        guard let pixelBuffer: CVPixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
         
         // execute the request
-        // ! means to abort the execution if that variable is nil
-        try? VNImageRequestHandler(cvPixelBuffer: CVpixel!, options: [:]).perform([request])
-        
-        
-        
-//        UIDevice.current.setValue(UIDeviceOrientation.landscapeLeft.rawValue, forKey: "orientation")
-        
-        //        sleep(4)
-        // NOTE: UIDevice.current.orientation.is_ gets the current device orientation, not the screen orientation. This is a good thing for me.
-        if UIDevice.current.orientation.isLandscape {
-            print("Landscape")
-        }
-        else if UIDevice.current.orientation.isPortrait {
-            print("Portrait")
-        }
-        
-        if UIDevice.current.orientation.isFlat {
-            print("Flat main")
-        } else {
-            print("Not Flat main")
-        }
-        
-        //        sleep(4)
+        try? VNImageRequestHandler(cvPixelBuffer: pixelBuffer, options: [:]).perform([request])
     }
-    
     
     override func didReceiveMemoryWarning() {
         // call the parent function

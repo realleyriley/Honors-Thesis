@@ -14,7 +14,7 @@ import Vision
 
 class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
     
-    var model = try! VNCoreMLModel(for: m5_26078_9879().model)
+    var model = try! VNCoreMLModel(for: m6_23090_9970().model)
 
     // create a label to hold the label and confidence
     let label: UILabel = {
@@ -38,33 +38,6 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
 //        initModel()     // this doesn't work yet
     }
     
-    // called whenever this view appears. right now I'm just testing some swift functions.
-    override func viewDidAppear(_ animated: Bool) {
-        if UIDevice.current.orientation.isFlat {
-            print( "UIDevice.current.orientation.isFlat " )
-        }
-        else {
-            print("Not flat")
-        }
-        
-        // the other orientations
-        switch UIDevice.current.orientation {
-        case .landscapeLeft:
-            print("landscapeLeft")
-        case .landscapeRight:
-            print("landscapeRight")
-        case .portrait:
-            print("portrait")
-        case .portraitUpsideDown:
-            print("portraitUpsideDown")
-        case .faceUp:
-            print("faceUp")
-        case .faceDown:
-            print("faceDown")
-        default: print("other")
-        }
-    }
-        
     override func didReceiveMemoryWarning() {
         // call the parent function
         super.didReceiveMemoryWarning()
@@ -101,38 +74,38 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         captureSession.startRunning()
     }
     
+    override var shouldAutorotate: Bool {
+        return false
+    }
     
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-        print("Caputure Output")
-//        // load our CoreML Pokedex model
-//        guard let model = try? VNCoreMLModel(for: m5_26078_9879().model) else { return }
         
         // run an inference with CoreML
-//        let request = VNCoreMLRequest(model: self.model) { (finishedRequest, error) in
-//
-//            // grab the inference results
-//            guard let results = finishedRequest.results as? [VNClassificationObservation] else { return }
-//
-//            // grab the highest confidence result
-//            guard let Observation = results.first else { return }
-//
-//            // create the label text components
-//            let predclass = "\(Observation.identifier)"
-//            let predconfidence = String(format: "%.02f%", Observation.confidence * 100)
-//
-//            // set the label text
-//            DispatchQueue.main.async(execute: {
-//                self.label.text = "\(predclass) \(predconfidence)"
-//            })
-//        }
-//
-//        // create a Core Video pixel buffer which is an image buffer that holds pixels in main memory
-//        // Applications generating frames, compressing or decompressing video, or using Core Image
-//        // can all make use of Core Video pixel buffers
-//        guard let pixelBuffer: CVPixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
-//
-//        // execute the request
-//        try? VNImageRequestHandler(cvPixelBuffer: pixelBuffer, options: [:]).perform([request])
+        let request = VNCoreMLRequest(model: self.model) { (finishedRequest, error) in
+
+            // grab the inference results
+            guard let results = finishedRequest.results as? [VNClassificationObservation] else { return }
+
+            // grab the highest confidence result
+            guard let Observation = results.first else { return }
+
+            // create the label text components
+            let predclass = "\(Observation.identifier)"
+            let predconfidence = String(format: "%.02f%", Observation.confidence * 100)
+
+            // set the label text
+            DispatchQueue.main.async(execute: {
+                self.label.text = "\(predclass) \(predconfidence)"
+            })
+        }
+
+        // create a Core Video pixel buffer which is an image buffer that holds pixels in main memory
+        // Applications generating frames, compressing or decompressing video, or using Core Image
+        // can all make use of Core Video pixel buffers
+        guard let pixelBuffer: CVPixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
+
+        // execute the request
+        try? VNImageRequestHandler(cvPixelBuffer: pixelBuffer, options: [:]).perform([request])
     }
     
     func setupLabel() {

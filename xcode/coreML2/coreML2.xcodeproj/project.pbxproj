@@ -13,6 +13,7 @@
 		2216EA2323231FE20048559E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2216EA2123231FE20048559E /* LaunchScreen.storyboard */; };
 		2216EA2B232321C30048559E /* pokedex.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 2216EA2A232321C30048559E /* pokedex.mlmodel */; };
 		2216EA5E2326F6E50048559E /* m5_26078_9879.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 2216EA5D2326F6E50048559E /* m5_26078_9879.mlmodel */; };
+		223C0BDE233AD99D00788CFA /* m6_23090_9970.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 223C0BDD233AD99D00788CFA /* m6_23090_9970.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		2216EA2423231FE20048559E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2216EA2A232321C30048559E /* pokedex.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = pokedex.mlmodel; sourceTree = "<group>"; };
 		2216EA5D2326F6E50048559E /* m5_26078_9879.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = m5_26078_9879.mlmodel; path = ../../../models/m5_26078_9879.mlmodel; sourceTree = "<group>"; };
+		223C0BDD233AD99D00788CFA /* m6_23090_9970.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = m6_23090_9970.mlmodel; path = ../../../models/m6_23090_9970.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			children = (
 				2216EA2A232321C30048559E /* pokedex.mlmodel */,
 				2216EA5D2326F6E50048559E /* m5_26078_9879.mlmodel */,
+				223C0BDD233AD99D00788CFA /* m6_23090_9970.mlmodel */,
 				2216EA1823231FE00048559E /* AppDelegate.swift */,
 				2216EA1A23231FE00048559E /* ViewController.swift */,
 				2216EA1F23231FE20048559E /* Assets.xcassets */,
@@ -140,6 +143,7 @@
 				2216EA2B232321C30048559E /* pokedex.mlmodel in Sources */,
 				2216EA5E2326F6E50048559E /* m5_26078_9879.mlmodel in Sources */,
 				2216EA1B23231FE00048559E /* ViewController.swift in Sources */,
+				223C0BDE233AD99D00788CFA /* m6_23090_9970.mlmodel in Sources */,
 				2216EA1923231FE00048559E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
