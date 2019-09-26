@@ -129,6 +129,9 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         let gravity_orientation = UIDevice.current.orientation.rawValue     // this is the orientation that the device *wants* to rotate to
         print("Current orientation: ", gravity_orientation)
         
+        
+        let startTime = DispatchTime.now() // <<<<<<<<<< Start time
+        
         // here is where the magic happens
         let coreML_output = VNCoreMLRequest(model: self.model) { (finishedRequest, error) in
             // grab the inference results
@@ -188,7 +191,9 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         let predconfidence = String(format: "%.01f%%%", observation_one.confidence * 100)
         self.confidence.text = "\(predconfidence)"
         
-        
+        let endTime = DispatchTime.now()   // <<<<<<<<<<   end time
+        let seconds = Double(endTime.uptimeNanoseconds - startTime.uptimeNanoseconds) / 1_000_000_000 // <<<<< Difference in nano seconds (UInt64)
+        print("Took \(seconds) seconds to anlyze \(i) images")
         // only override if we are confident enough. If we weren't confident enough, then we don't ever override gravity
         if override_gravity {
             // if the two agree on the rotation, then we allow the rotation
@@ -205,6 +210,9 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             predictedOrientation = predictedOrientation! + " - Grav"
             self.predictedOrientation.text = predictedOrientation
         }
+        
+        
+
     }
     
     // does not support upsidedown by default
