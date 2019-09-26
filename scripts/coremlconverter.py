@@ -1,5 +1,5 @@
 # USAGE
-# python coremlconverter.py --model pokedex.model --labelbin lb.pickle
+# python coremlconverter.py -m <h5_model_file_name>
 
 # import necessary packages
 from keras.models import load_model
@@ -10,8 +10,6 @@ import argparse
 ap = argparse.ArgumentParser()
 ap.add_argument("-m", "--model", required=True,
 	help="name of trained keras model")
-#ap.add_argument("-l", "--labelbin", required=True,
-#    help="path to label binarizer")
 args = vars(ap.parse_args())
 
 # load the class labels
@@ -26,7 +24,8 @@ model = load_model('..//models//' + args["model"] + '.h5')
 
 # convert the model to coreml format
 print("[INFO] converting model")
-class_labels = ['right','upsidedown','left','vertical']
+# class_labels = ['right','upsidedown','left','vertical']
+class_labels = [4,2,3,1]
 coreml_model = convert(model,
     input_names="image",
     image_input_names="image",
