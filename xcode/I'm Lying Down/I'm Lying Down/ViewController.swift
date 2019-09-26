@@ -105,7 +105,6 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
                     captureSession?.addOutput(captureOutput)
                     captureOutput.setSampleBufferDelegate(self as AVCaptureVideoDataOutputSampleBufferDelegate, queue: DispatchQueue(label: "videoQueue"))     // buffer the video and start the capture session
                     captureSession?.startRunning()
-                    
                 }
                 catch{
                     print("camera switch error")
@@ -114,27 +113,13 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         }
     }
     
-
-    public class LinkedList {
-        fileprivate var head: CVPixelBuffer?
-        private var tail: CVPixelBuffer?
-        
-        public var first: CVPixelBuffer? {
-            return head
-        }
-        
-        public var last: CVPixelBuffer? {
-            return tail
-        }
-    }
-    
     var CVpixel: CVPixelBuffer? = nil
     
     // This is an overriden function https://developer.apple.com/documentation/avfoundation/avcapturevideodataoutputsamplebufferdelegate/1385775-captureoutput
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-    
-        CVpixel = CMSampleBufferGetImageBuffer(sampleBuffer)
         
+        // move the captured images to a global place so that viewWillTransition can access it
+        CVpixel = CMSampleBufferGetImageBuffer(sampleBuffer)
     }
     
     
