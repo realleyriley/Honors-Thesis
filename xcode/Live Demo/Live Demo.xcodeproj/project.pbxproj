@@ -7,29 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2216EA1923231FE00048559E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2216EA1823231FE00048559E /* AppDelegate.swift */; };
-		2216EA1B23231FE00048559E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2216EA1A23231FE00048559E /* ViewController.swift */; };
-		2216EA2023231FE20048559E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2216EA1F23231FE20048559E /* Assets.xcassets */; };
-		2216EA2323231FE20048559E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2216EA2123231FE20048559E /* LaunchScreen.storyboard */; };
-		2216EA2B232321C30048559E /* pokedex.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 2216EA2A232321C30048559E /* pokedex.mlmodel */; };
-		2216EA5E2326F6E50048559E /* m5_26078_9879.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 2216EA5D2326F6E50048559E /* m5_26078_9879.mlmodel */; };
-		223C0BDE233AD99D00788CFA /* m6_23090_9970.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 223C0BDD233AD99D00788CFA /* m6_23090_9970.mlmodel */; };
+		2283489E233ADDC400E4CC34 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2283489D233ADDC400E4CC34 /* AppDelegate.swift */; };
+		228348A0233ADDC400E4CC34 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2283489F233ADDC400E4CC34 /* ViewController.swift */; };
+		228348A3233ADDC400E4CC34 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 228348A1233ADDC400E4CC34 /* Main.storyboard */; };
+		228348A5233ADDC500E4CC34 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 228348A4233ADDC500E4CC34 /* Assets.xcassets */; };
+		228348A8233ADDC500E4CC34 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 228348A6233ADDC500E4CC34 /* LaunchScreen.storyboard */; };
+		228348B0233ADE9C00E4CC34 /* m6_23090_9970.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 228348AF233ADE9C00E4CC34 /* m6_23090_9970.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2216EA1523231FE00048559E /* coreML2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = coreML2.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		2216EA1823231FE00048559E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2216EA1A23231FE00048559E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		2216EA1F23231FE20048559E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		2216EA2223231FE20048559E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		2216EA2423231FE20048559E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2216EA2A232321C30048559E /* pokedex.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = pokedex.mlmodel; sourceTree = "<group>"; };
-		2216EA5D2326F6E50048559E /* m5_26078_9879.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = m5_26078_9879.mlmodel; path = ../../../models/m5_26078_9879.mlmodel; sourceTree = "<group>"; };
-		223C0BDD233AD99D00788CFA /* m6_23090_9970.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = m6_23090_9970.mlmodel; path = ../../../models/m6_23090_9970.mlmodel; sourceTree = "<group>"; };
+		2283489A233ADDC400E4CC34 /* Live Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Live Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2283489D233ADDC400E4CC34 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		2283489F233ADDC400E4CC34 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		228348A2233ADDC400E4CC34 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		228348A4233ADDC500E4CC34 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		228348A7233ADDC500E4CC34 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		228348A9233ADDC500E4CC34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		228348AF233ADE9C00E4CC34 /* m6_23090_9970.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = m6_23090_9970.mlmodel; path = ../../../models/m6_23090_9970.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		2216EA1223231FE00048559E /* Frameworks */ = {
+		22834897233ADDC400E4CC34 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -39,73 +37,72 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2216EA0C23231FE00048559E = {
+		22834891233ADDC400E4CC34 = {
 			isa = PBXGroup;
 			children = (
-				2216EA1723231FE00048559E /* coreML2 */,
-				2216EA1623231FE00048559E /* Products */,
+				2283489C233ADDC400E4CC34 /* Live Demo */,
+				2283489B233ADDC400E4CC34 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		2216EA1623231FE00048559E /* Products */ = {
+		2283489B233ADDC400E4CC34 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2216EA1523231FE00048559E /* coreML2.app */,
+				2283489A233ADDC400E4CC34 /* Live Demo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		2216EA1723231FE00048559E /* coreML2 */ = {
+		2283489C233ADDC400E4CC34 /* Live Demo */ = {
 			isa = PBXGroup;
 			children = (
-				2216EA2A232321C30048559E /* pokedex.mlmodel */,
-				2216EA5D2326F6E50048559E /* m5_26078_9879.mlmodel */,
-				223C0BDD233AD99D00788CFA /* m6_23090_9970.mlmodel */,
-				2216EA1823231FE00048559E /* AppDelegate.swift */,
-				2216EA1A23231FE00048559E /* ViewController.swift */,
-				2216EA1F23231FE20048559E /* Assets.xcassets */,
-				2216EA2123231FE20048559E /* LaunchScreen.storyboard */,
-				2216EA2423231FE20048559E /* Info.plist */,
+				228348AF233ADE9C00E4CC34 /* m6_23090_9970.mlmodel */,
+				2283489D233ADDC400E4CC34 /* AppDelegate.swift */,
+				2283489F233ADDC400E4CC34 /* ViewController.swift */,
+				228348A1233ADDC400E4CC34 /* Main.storyboard */,
+				228348A4233ADDC500E4CC34 /* Assets.xcassets */,
+				228348A6233ADDC500E4CC34 /* LaunchScreen.storyboard */,
+				228348A9233ADDC500E4CC34 /* Info.plist */,
 			);
-			path = coreML2;
+			path = "Live Demo";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2216EA1423231FE00048559E /* coreML2 */ = {
+		22834899233ADDC400E4CC34 /* Live Demo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2216EA2723231FE20048559E /* Build configuration list for PBXNativeTarget "coreML2" */;
+			buildConfigurationList = 228348AC233ADDC500E4CC34 /* Build configuration list for PBXNativeTarget "Live Demo" */;
 			buildPhases = (
-				2216EA1123231FE00048559E /* Sources */,
-				2216EA1223231FE00048559E /* Frameworks */,
-				2216EA1323231FE00048559E /* Resources */,
+				22834896233ADDC400E4CC34 /* Sources */,
+				22834897233ADDC400E4CC34 /* Frameworks */,
+				22834898233ADDC400E4CC34 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = coreML2;
-			productName = coreML2;
-			productReference = 2216EA1523231FE00048559E /* coreML2.app */;
+			name = "Live Demo";
+			productName = "Live Demo";
+			productReference = 2283489A233ADDC400E4CC34 /* Live Demo.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		2216EA0D23231FE00048559E /* Project object */ = {
+		22834892233ADDC400E4CC34 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1030;
 				LastUpgradeCheck = 1030;
-				ORGANIZATIONNAME = Communism;
+				ORGANIZATIONNAME = Tallman;
 				TargetAttributes = {
-					2216EA1423231FE00048559E = {
+					22834899233ADDC400E4CC34 = {
 						CreatedOnToolsVersion = 10.3;
 					};
 				};
 			};
-			buildConfigurationList = 2216EA1023231FE00048559E /* Build configuration list for PBXProject "coreML2" */;
+			buildConfigurationList = 22834895233ADDC400E4CC34 /* Build configuration list for PBXProject "Live Demo" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -113,48 +110,55 @@
 				en,
 				Base,
 			);
-			mainGroup = 2216EA0C23231FE00048559E;
-			productRefGroup = 2216EA1623231FE00048559E /* Products */;
+			mainGroup = 22834891233ADDC400E4CC34;
+			productRefGroup = 2283489B233ADDC400E4CC34 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2216EA1423231FE00048559E /* coreML2 */,
+				22834899233ADDC400E4CC34 /* Live Demo */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		2216EA1323231FE00048559E /* Resources */ = {
+		22834898233ADDC400E4CC34 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2216EA2323231FE20048559E /* LaunchScreen.storyboard in Resources */,
-				2216EA2023231FE20048559E /* Assets.xcassets in Resources */,
+				228348A8233ADDC500E4CC34 /* LaunchScreen.storyboard in Resources */,
+				228348A5233ADDC500E4CC34 /* Assets.xcassets in Resources */,
+				228348A3233ADDC400E4CC34 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		2216EA1123231FE00048559E /* Sources */ = {
+		22834896233ADDC400E4CC34 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2216EA2B232321C30048559E /* pokedex.mlmodel in Sources */,
-				2216EA5E2326F6E50048559E /* m5_26078_9879.mlmodel in Sources */,
-				2216EA1B23231FE00048559E /* ViewController.swift in Sources */,
-				223C0BDE233AD99D00788CFA /* m6_23090_9970.mlmodel in Sources */,
-				2216EA1923231FE00048559E /* AppDelegate.swift in Sources */,
+				228348A0233ADDC400E4CC34 /* ViewController.swift in Sources */,
+				228348B0233ADE9C00E4CC34 /* m6_23090_9970.mlmodel in Sources */,
+				2283489E233ADDC400E4CC34 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		2216EA2123231FE20048559E /* LaunchScreen.storyboard */ = {
+		228348A1233ADDC400E4CC34 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				2216EA2223231FE20048559E /* Base */,
+				228348A2233ADDC400E4CC34 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		228348A6233ADDC500E4CC34 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				228348A7233ADDC500E4CC34 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -162,7 +166,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		2216EA2523231FE20048559E /* Debug */ = {
+		228348AA233ADDC500E4CC34 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -223,7 +227,7 @@
 			};
 			name = Debug;
 		};
-		2216EA2623231FE20048559E /* Release */ = {
+		228348AB233ADDC500E4CC34 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -278,36 +282,36 @@
 			};
 			name = Release;
 		};
-		2216EA2823231FE20048559E /* Debug */ = {
+		228348AD233ADDC500E4CC34 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M954WTLF92;
-				INFOPLIST_FILE = coreML2/Info.plist;
+				INFOPLIST_FILE = "Live Demo/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = communism.coreML2;
+				PRODUCT_BUNDLE_IDENTIFIER = "tallman.Live-Demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		2216EA2923231FE20048559E /* Release */ = {
+		228348AE233ADDC500E4CC34 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M954WTLF92;
-				INFOPLIST_FILE = coreML2/Info.plist;
+				INFOPLIST_FILE = "Live Demo/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = communism.coreML2;
+				PRODUCT_BUNDLE_IDENTIFIER = "tallman.Live-Demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -317,25 +321,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2216EA1023231FE00048559E /* Build configuration list for PBXProject "coreML2" */ = {
+		22834895233ADDC400E4CC34 /* Build configuration list for PBXProject "Live Demo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				2216EA2523231FE20048559E /* Debug */,
-				2216EA2623231FE20048559E /* Release */,
+				228348AA233ADDC500E4CC34 /* Debug */,
+				228348AB233ADDC500E4CC34 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2216EA2723231FE20048559E /* Build configuration list for PBXNativeTarget "coreML2" */ = {
+		228348AC233ADDC500E4CC34 /* Build configuration list for PBXNativeTarget "Live Demo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				2216EA2823231FE20048559E /* Debug */,
-				2216EA2923231FE20048559E /* Release */,
+				228348AD233ADDC500E4CC34 /* Debug */,
+				228348AE233ADDC500E4CC34 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 2216EA0D23231FE00048559E /* Project object */;
+	rootObject = 22834892233ADDC400E4CC34 /* Project object */;
 }

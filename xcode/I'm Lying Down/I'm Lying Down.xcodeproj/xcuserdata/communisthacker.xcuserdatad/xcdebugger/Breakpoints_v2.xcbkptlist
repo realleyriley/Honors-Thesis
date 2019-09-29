@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "I&apos;m Lying Down/ViewController.swift"
+            timestampString = "591222922.158958"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
+            landmarkName = "viewWillTransition(to:with:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "I&apos;m Lying Down/ViewController.swift"
+            timestampString = "591222922.1596431"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "157"
+            endingLineNumber = "157"
+            landmarkName = "viewWillTransition(to:with:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "I&apos;m Lying Down/ViewController.swift"
+            timestampString = "591222922.159946"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "161"
+            endingLineNumber = "161"
+            landmarkName = "viewWillTransition(to:with:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "I_m_Lying_Down.ViewController.viewWillTransition(to: __C.CGSize, with: __C.UIViewControllerTransitionCoordinator) -&gt; ()"
+                  moduleName = "I&apos;m Lying Down"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/communisthacker/Documents/Github/Honors-Thesis/xcode/I&apos;m%20Lying%20Down/I&apos;m%20Lying%20Down/ViewController.swift"
+                  timestampString = "591089111.964094"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "197"
+                  endingLineNumber = "197"
+                  offsetFromSymbolStart = "4592">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "I_m_Lying_Down.ViewController.viewWillTransition(to: __C.CGSize, with: __C.UIViewControllerTransitionCoordinator) -&gt; ()"
+                  moduleName = "I&apos;m Lying Down"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/communisthacker/Documents/Github/Honors-Thesis/xcode/I&apos;m%20Lying%20Down/I&apos;m%20Lying%20Down/ViewController.swift"
+                  timestampString = "591089111.967483"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "197"
+                  endingLineNumber = "197"
+                  offsetFromSymbolStart = "4632">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

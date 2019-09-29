@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina5_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Live_Demo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="woR-XS-JYT">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="778"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="afm-va-vBc">
+                                <rect key="frame" x="315" y="752" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="RDW-RG-he9"/>
+                                    <constraint firstAttribute="height" constant="40" id="lgB-Zc-L4I"/>
+                                </constraints>
+                                <state key="normal" image="CameraRotateIcon"/>
+                                <connections>
+                                    <action selector="switchCamera:" destination="BYZ-38-t0r" eventType="touchUpInside" id="376-E9-YsC"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="confidence" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lea-Pc-G0E" userLabel="confidence">
+                                <rect key="frame" x="29.999999999999993" y="766" width="85.333333333333314" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Predicted Orientation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SxM-ky-Wq5" userLabel="predictedOrientation">
+                                <rect key="frame" x="106.00000000000001" y="766.66666666666663" width="163.33333333333337" height="20.333333333333371"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Lea-Pc-G0E" secondAttribute="bottom" constant="25" id="IQJ-hW-N6G"/>
+                            <constraint firstItem="Lea-Pc-G0E" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="K21-GN-Qqo"/>
+                            <constraint firstAttribute="bottom" secondItem="SxM-ky-Wq5" secondAttribute="bottom" constant="25" id="M6E-fx-WqC"/>
+                            <constraint firstItem="woR-XS-JYT" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="dDw-l8-96o"/>
+                            <constraint firstAttribute="bottom" secondItem="afm-va-vBc" secondAttribute="bottom" constant="20" id="dyY-V9-lGL"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="afm-va-vBc" secondAttribute="trailing" constant="20" id="kKk-Fn-Ctk"/>
+                            <constraint firstItem="woR-XS-JYT" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="mzf-4H-kIN"/>
+                            <constraint firstItem="woR-XS-JYT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="p2n-If-kjb"/>
+                            <constraint firstItem="woR-XS-JYT" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="sUL-5l-8kY"/>
+                            <constraint firstItem="SxM-ky-Wq5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xwj-a5-lwZ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="cameraView" destination="woR-XS-JYT" id="Paq-r3-zWN"/>
+                        <outlet property="confidence" destination="Lea-Pc-G0E" id="1ES-cA-9qN"/>
+                        <outlet property="predictedOrientation" destination="SxM-ky-Wq5" id="Z5E-XI-Xhw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="53.600000000000001" y="26.53673163418291"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="CameraRotateIcon" width="512" height="512"/>
+    </resources>
+</document>
