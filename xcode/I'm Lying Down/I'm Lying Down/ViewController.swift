@@ -222,6 +222,10 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         }
     }
     
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
     override func didReceiveMemoryWarning() {
         // call the parent function
         super.didReceiveMemoryWarning()
