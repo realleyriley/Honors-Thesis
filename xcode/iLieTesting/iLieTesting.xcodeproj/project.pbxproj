@@ -13,6 +13,7 @@
 		228348E52345AA7800E4CC34 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 228348E42345AA7800E4CC34 /* Assets.xcassets */; };
 		228348E82345AA7800E4CC34 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 228348E62345AA7800E4CC34 /* LaunchScreen.storyboard */; };
 		228348F12345B6C200E4CC34 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 228348F02345B6C200E4CC34 /* WebKit.framework */; };
+		228348F32345B8ED00E4CC34 /* m6_23090_9970.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 228348F22345B8ED00E4CC34 /* m6_23090_9970.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		228348E72345AA7800E4CC34 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		228348E92345AA7800E4CC34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		228348F02345B6C200E4CC34 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		228348F22345B8ED00E4CC34 /* m6_23090_9970.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = m6_23090_9970.mlmodel; path = ../../../models/m6_23090_9970.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 		228348DC2345AA7600E4CC34 /* iLieTesting */ = {
 			isa = PBXGroup;
 			children = (
+				228348F22345B8ED00E4CC34 /* m6_23090_9970.mlmodel */,
 				228348DD2345AA7600E4CC34 /* AppDelegate.swift */,
 				228348DF2345AA7600E4CC34 /* ViewController.swift */,
 				228348E12345AA7600E4CC34 /* Main.storyboard */,
@@ -148,6 +151,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				228348E02345AA7600E4CC34 /* ViewController.swift in Sources */,
+				228348F32345B8ED00E4CC34 /* m6_23090_9970.mlmodel in Sources */,
 				228348DE2345AA7600E4CC34 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
