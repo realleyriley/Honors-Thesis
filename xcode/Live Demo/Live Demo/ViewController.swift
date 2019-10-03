@@ -32,7 +32,15 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     override func viewDidLoad() {
         super.viewDidLoad()
         // Additional setup after loading the view ONCE
-        let videoCaptureDevice = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .back)  // loads the back camera with default settings on startup
+        let videoCaptureDevice = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .front)  // loads the front camera with default settings on startup
+        do { try videoCaptureDevice?.lockForConfiguration() }
+        catch { print("Cannot lock") }
+//        var videoSupportedFrameRateRanges: [AVFrameRateRange] { get }
+//        print(videoSupportedFrameRateRanges)
+//        videoCaptureDevice?.activeVideoMaxFrameDuration
+        print("MaxFrame: ", 1/CMTimeGetSeconds(videoCaptureDevice!.activeVideoMaxFrameDuration))
+        print("MinFrame: ", 1/CMTimeGetSeconds(videoCaptureDevice!.activeVideoMinFrameDuration))
+        
         do{
             let videoInput = try AVCaptureDeviceInput(device: videoCaptureDevice!)    // stream of input?
             captureSession = AVCaptureSession()
