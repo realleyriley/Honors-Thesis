@@ -118,6 +118,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     // This is an overriden function https://developer.apple.com/documentation/avfoundation/avcapturevideodataoutputsamplebufferdelegate/1385775-captureoutput
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         
+        print(class_getInstanceSize(CVpixel))
+        
         // move the captured images to a global place so that viewWillTransition can access it
         CVpixel = CMSampleBufferGetImageBuffer(sampleBuffer)
     }

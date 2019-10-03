@@ -17,9 +17,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     
     @IBOutlet weak var predictedOrientation: UILabel!
     @IBOutlet weak var confidence: UILabel!
-    
     @IBOutlet weak var cameraView: UIView!
-    
     
     
     var captureSession: AVCaptureSession?
@@ -40,6 +38,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
 //        videoCaptureDevice?.activeVideoMaxFrameDuration
         print("MaxFrame: ", 1/CMTimeGetSeconds(videoCaptureDevice!.activeVideoMaxFrameDuration))
         print("MinFrame: ", 1/CMTimeGetSeconds(videoCaptureDevice!.activeVideoMinFrameDuration))
+//        print("Resolution: ", videoCaptureDevice!)
         
         do{
             let videoInput = try AVCaptureDeviceInput(device: videoCaptureDevice!)    // stream of input?
