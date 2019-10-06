@@ -23,7 +23,7 @@ class ViewController: UIViewController, WKNavigationDelegate, AVCaptureVideoData
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        let url = URL(string: "https://www.eia.gov/tools/faqs/faq.php?id=427&t=3")
+        let url = URL(string: "https://www.express.co.uk/life-style/top10facts/464712/Top-10-facts-about-pi")
         let request = URLRequest(url: url!)
         webView.load(request)
         
@@ -65,7 +65,7 @@ class ViewController: UIViewController, WKNavigationDelegate, AVCaptureVideoData
     
     // portrait = 1, upsidedown = 2, landscapeLeft = 3, landscapeRight = 4
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-//        print("-------- View Will Transition --------")
+        print("-------- View Will Transition --------")
         let gravity_orientation = UIDevice.current.orientation.rawValue     // this is the orientation that the device *wants* to rotate to
 //        print("Current orientation: ", gravity_orientation)
         
@@ -162,6 +162,13 @@ class ViewController: UIViewController, WKNavigationDelegate, AVCaptureVideoData
         }
         else {
             print("fall back on gravity")
+        }
+    }
+    
+    // does not support upsidedown by default
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask{
+        get{
+            return .all
         }
     }
 }
