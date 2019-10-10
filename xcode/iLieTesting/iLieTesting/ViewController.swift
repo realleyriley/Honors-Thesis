@@ -23,7 +23,8 @@ class ViewController: UIViewController, WKNavigationDelegate, AVCaptureVideoData
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        let url = URL(string: "https://www.eia.gov/tools/faqs/faq.php?id=427&t=3")
+//        let url = URL(string: "https://www.express.co.uk/life-style/top10facts/464712/Top-10-facts-about-pi")
+        let url = URL(string: "https://www.apple.com")
         let request = URLRequest(url: url!)
         webView.load(request)
         
@@ -90,7 +91,7 @@ class ViewController: UIViewController, WKNavigationDelegate, AVCaptureVideoData
         var override_gravity: Bool = false
         
         // loop over 8 more images at max if we don't get confident scores. If we get a good enough confidence for two consecutive images at a time, then we can break
-        let n = 8
+        let n = 2
         while(i < n) {
             // the two outputs need to be the same
             if (observation_zero.identifier == observation_one.identifier){
@@ -121,7 +122,7 @@ class ViewController: UIViewController, WKNavigationDelegate, AVCaptureVideoData
             print(milliseconds)
         }
         
-        print("Took \(milliseconds) ms to anlyze \(i) images")
+//        print("Took \(milliseconds) ms to anlyze \(i) images")
 
         
         // set the label text
@@ -142,10 +143,10 @@ class ViewController: UIViewController, WKNavigationDelegate, AVCaptureVideoData
         }
         
 //        self.predictedOrientation.text = predictedOrientation
-        print("predOrient: ", predictedOrientation!)
+//        print("predOrient: ", predictedOrientation!)
         
         let predconfidence = String(format: "%.01f%%%", observation_one.confidence * 100)
-        print("predConf: ", predconfidence)
+//        print("predConf: ", predconfidence)
         
         
         // only override if we are confident enough. If we weren't confident enough, then we don't ever override gravity
@@ -161,7 +162,14 @@ class ViewController: UIViewController, WKNavigationDelegate, AVCaptureVideoData
             }
         }
         else {
-            print("fall back on gravity")
+//            print("fall back on gravity")
+        }
+    }
+    
+    // does not support upsidedown by default
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask{
+        get{
+            return .all
         }
     }
 }

@@ -124,7 +124,9 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         CVpixel = CMSampleBufferGetImageBuffer(sampleBuffer)
     }
     
-    
+    override func willRotate(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
+        
+    }
     // portrait = 1, upsidedown = 2, landscapeLeft = 3, landscapeRight = 4
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         print("-------- View Will Transition --------")

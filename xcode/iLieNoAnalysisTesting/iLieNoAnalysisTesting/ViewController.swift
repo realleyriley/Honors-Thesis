@@ -17,14 +17,20 @@ class ViewController: UIViewController, WKNavigationDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        let url = URL(string: "https://www.eia.gov/tools/faqs/faq.php?id=427&t=3")
+        let url = URL(string: "https://www.apple.com")
         let request = URLRequest(url: url!)
         webView.load(request)
     }
     
     override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
-        return UIInterfaceOrientation.portrait
+        return UIInterfaceOrientation.portraitUpsideDown
     }
     
+    // does not support upsidedown by default
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask{
+        get{
+            return .all
+        }
+    }
 }
 
