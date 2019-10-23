@@ -1,4 +1,5 @@
 # USAGE
+# source ~/Documents/virtualenvs/coreml/bin/activate
 # python coremlconverter.py -m <h5_model_file_name>
 
 # import necessary packages
@@ -24,8 +25,8 @@ model = load_model('..//models//' + args["model"] + '.h5')
 
 # convert the model to coreml format
 print("[INFO] converting model")
-# class_labels = ['right','upsidedown','left','vertical']
-class_labels = [4,2,3,1]
+class_labels = ['right','upsidedown','left','portrait']
+#class_labels = [4,2,3,1]
 coreml_model = convert(model,
     input_names="image",
     image_input_names="image",
