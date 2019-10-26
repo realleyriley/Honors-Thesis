@@ -17,9 +17,13 @@ class ViewController: UIViewController, WKNavigationDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        let url = URL(string: "https://www.apple.com")
+        let url = URL(string: "https://google.com")
         let request = URLRequest(url: url!)
         webView.load(request)
+    }
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
     }
     
     override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {

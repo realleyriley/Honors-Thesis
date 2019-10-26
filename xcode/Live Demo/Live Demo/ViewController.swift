@@ -14,6 +14,7 @@ import Vision
 
 class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
     
+    @IBOutlet weak var iLieDown: UIImageView!
     
     @IBOutlet weak var predictedOrientation: UILabel!
     @IBOutlet weak var confidence: UILabel!
@@ -70,6 +71,9 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         return false
     }
     
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
     
     @IBAction func switchCamera(_ sender: Any) {
         guard let currentCameraInput: AVCaptureInput = captureSession?.inputs.first else{
